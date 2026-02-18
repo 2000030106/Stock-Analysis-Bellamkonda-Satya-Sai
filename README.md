@@ -6,7 +6,7 @@
 
 
 
-Stock Market Analysis – End-to-End Data Engineering Project
+Stock Market Analysis – Python and SQL  Project
 
 
 
