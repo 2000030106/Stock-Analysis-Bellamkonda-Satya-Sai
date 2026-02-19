@@ -134,7 +134,8 @@ Stock-Analysis/
 
 ### 📈 Daily Closing Price Trend
 
-![Daily Trend](images/daily_trend.png)
+<img width="580" height="453" alt="image" src="https://github.com/user-attachments/assets/32a321eb-2f5e-451a-b2f8-2f56ba81cf35" />
+
 
 ---
 
