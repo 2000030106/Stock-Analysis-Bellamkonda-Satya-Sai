@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python">
   <img src="https://img.shields.io/badge/MySQL-8.0-orange?logo=mysql">
   <img src="https://img.shields.io/badge/Matplotlib-Visualization-green">
-  <img src="https://img.shields.io/badge/Project-Completed-brightgreen">
+  <img src="https://img.shields.io/badge/Pandas-Data%20Processing-green">
 </p>
 
 ---
@@ -53,8 +53,7 @@ Business Insights
 | NumPy | Numerical Calculations |
 | MySQL | Data Storage & SQL Analytics |
 | Matplotlib | Data Visualization |
-| Logging | Error Tracking |
-| Exception Handling | Robust Pipeline |
+
 
 ---
 
@@ -130,26 +129,61 @@ Stock-Analysis/
 
 ---
 
-## 🖼️ Sample Visualizations
+## 🖼️  Visualizations
 
-### 📈 Daily Closing Price Trend
+
 
 <img width="580" height="453" alt="image" src="https://github.com/user-attachments/assets/32a321eb-2f5e-451a-b2f8-2f56ba81cf35" />
 
 
 ---
 
-### 📉 Moving Averages (7-Day & 30-Day)
+<img width="571" height="453" alt="image" src="https://github.com/user-attachments/assets/d720890f-2581-4f92-816d-8ef1d8f456d5" />
 
-![Moving Average](images/moving_average.png)
+
+
+
+---
+<img width="580" height="453" alt="image" src="https://github.com/user-attachments/assets/d57a8cf7-5acd-4bc1-b4bb-5d194c08b190" />
+
+<img width="580" height="453" alt="image" src="https://github.com/user-attachments/assets/c0c95271-f1d7-428b-b5a7-593d857a3b57" />
+
+
+<img width="580" height="453" alt="image" src="https://github.com/user-attachments/assets/f2a476f7-b9b9-4af9-8c02-2bbdddf1afe2" />
+
+
+
 
 ---
 
-### 📊 Volume vs Price Correlation
 
-![Volume Correlation](images/volume_correlation.png)
+<img width="580" height="453" alt="image" src="https://github.com/user-attachments/assets/5affa8f4-c82a-4238-90cc-1a3671885e2d" />
+
+<img width="580" height="453" alt="image" src="https://github.com/user-attachments/assets/ea137d40-850e-425a-a8fc-a7b871739478" />
+
+
+<img width="580" height="453" alt="image" src="https://github.com/user-attachments/assets/f1f034cc-81bd-455b-8fd5-f056956705a5" />
+
 
 ---
+
+## Business Insights
+
+
+<img width="563" height="453" alt="image" src="https://github.com/user-attachments/assets/62a85a67-03ca-4bdb-81e7-7dce2e770b7f" />
+
+---
+
+<img width="578" height="453" alt="image" src="https://github.com/user-attachments/assets/ea477c64-1a89-4bf1-b9d7-7396644cecf4" />
+
+
+<img width="576" height="453" alt="image" src="https://github.com/user-attachments/assets/5f972e35-c300-4ac9-ab4c-7bcfcafdb583" />
+
+---
+
+<img width="580" height="453" alt="image" src="https://github.com/user-attachments/assets/bcfa00f2-c542-4777-be0a-ce3cca8d6139" />
+
+
 
 ## 🧮 Example SQL Queries
 
