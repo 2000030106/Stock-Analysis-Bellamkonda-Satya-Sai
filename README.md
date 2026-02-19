@@ -1,437 +1,263 @@
-### Stock-Analysis-Bellamkonda-Satya-Sai
+# 📊 Stock Market Analysis & ETL Pipeline
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python">
+  <img src="https://img.shields.io/badge/MySQL-8.0-orange?logo=mysql">
+  <img src="https://img.shields.io/badge/Matplotlib-Visualization-green">
+  <img src="https://img.shields.io/badge/Project-Completed-brightgreen">
+</p>
 
+---
 
+## 🚀 Project Overview
 
+This project analyzes historical stock market data to uncover trading patterns, evaluate company performance, and generate business insights using a complete Data Engineering pipeline.
 
+- Python-based ETL processing  
+- Data cleaning & business rule validation  
+- MySQL data modeling & analytics  
+- Technical indicators (Volatility, Moving Averages)  
+- Business insights generation  
+- Data visualization dashboards  
 
+---
 
-Stock Market Analysis – Python and SQL  Project
+## 🏗️ Architecture / ETL Pipeline Flow
 
-
-
-Project Overview:
-
-
-
-This project analyzes historical stock market data to:
-
-
-
-Identify trading patterns
-
-
-
-Perform technical analysis
-
-
-
-Generate business insights
-
-
-
-Apply data cleaning using business rules
-
-
-
-Build SQL analytics queries
-
-
-
-Visualize trends using Python
-
-
-
-----------------------------------------------------------
-
-
-
-Project Architecture (ETL Flow)
-
-
-
-Raw CSV Files (Dirty Data)
-
-&nbsp;       ↓
-
+```text
+CSV Files (Raw / Dirty Data)
+        ↓
 Python ETL (Pandas)
-
-&nbsp;  - Deduplication
-
-&nbsp;  - Null handling
-
-&nbsp;  - Business rule implementation
-
-&nbsp;  - Data validation
-
-&nbsp;       ↓
-
-MySQL Clean Tables
-
-&nbsp;  - DDL
-
-&nbsp;  - Constraints
-
-&nbsp;       ↓
-
-SQL Analytics
-
-&nbsp;       ↓
-
-Matplotlib Visualizations
-
-&nbsp;       ↓
-
+   • Deduplication
+   • Missing value handling
+   • Business rule validation
+   • Trend classification
+        ↓
+MySQL Clean Tables (DDL + Constraints)
+        ↓
+SQL Analytics Queries
+        ↓
+Matplotlib Dashboards
+        ↓
 Business Insights
+```
 
+---
 
+## 🛠️ Tech Stack
 
+| Technology | Purpose |
+|------------|----------|
+| Python | Data Processing & ETL |
+| Pandas | Data Cleaning & Transformation |
+| NumPy | Numerical Calculations |
+| MySQL | Data Storage & SQL Analytics |
+| Matplotlib | Data Visualization |
+| Logging | Error Tracking |
+| Exception Handling | Robust Pipeline |
 
+---
 
-------------------------------------------------
+## 📂 Project Structure
 
-Tools \& Technologies Used
+```text
+Stock-Analysis/
+│
+├── data/                   # Raw CSV files
+├── notebooks/              # Jupyter Notebook (.ipynb)
+├── sql/                    # MySQL DDL & Queries
+├── images/                 # Generated visualizations
+├── requirements.txt
+└── README.md
+```
 
+---
 
+## 📌 Problem Statement
 
-| Category | Tools Used |
+### 🔹 Technical Analysis
+- Plot daily closing price trends per stock
+- Identify highest volatility stock
+- Analyze volume vs price movement correlation
+- Calculate 7-day moving average
+- Calculate 30-day moving average
 
-|----------|------------|
+### 🔹 Business Insights
+- Best performing stock by average returns
+- Days with abnormal volume spikes
+- UP vs DOWN trend ratio per company
 
-| Programming | Python |
+---
 
-| Libraries | Pandas, Matplotlib, Seaborn |
+## ⚙️ Business Rules Implemented
 
-| Database | MySQL |
+### 1️⃣ Missing Value Treatment
 
-| Concepts | ETL, Window Functions, Data Validation, Time Series Analysis |
+| Column        | Rule |
+|--------------|------|
+| close_price  | Replace with median close_price per stock |
+| volume       | Replace with 0 |
+| high_price   | Replace with max(open_price, close_price) |
+| low_price    | Replace with min(open_price, close_price) |
 
-----------------------------------------------------------------
+---
 
-Step-by-Step Implementation Process
+### 2️⃣ Price Sanity Checks
 
+- high_price ≥ open_price AND close_price  
+- low_price ≤ open_price AND close_price  
+- If violated → auto-corrected automatically  
 
+---
 
+### 3️⃣ Trend Classification
 
+| Condition | Trend |
+|-----------|-------|
+| daily_return > 0 | UP |
+| daily_return < 0 | DOWN |
+| daily_return = 0 | NO_CHANGE |
 
-Step 1: Data Collection
+---
 
+## 📊 Key Metrics Calculated
 
+- Daily Return
+- Volatility (Standard Deviation of Returns)
+- Moving Averages (7-day & 30-day)
+- Volume Spikes
+- Trend Ratios
 
-Collected historical stock market CSV files.
+---
 
+## 🖼️ Sample Visualizations
 
+### 📈 Daily Closing Price Trend
 
-Data contains:
+![Daily Trend](images/daily_trend.png)
 
+---
 
+### 📉 Moving Averages (7-Day & 30-Day)
 
-open\_price
+![Moving Average](images/moving_average.png)
 
+---
 
+### 📊 Volume vs Price Correlation
 
-close\_price
+![Volume Correlation](images/volume_correlation.png)
 
+---
 
+## 🧮 Example SQL Queries
 
-high\_price
+### 🔹 Highest Volatility Stock
 
+```sql
+SELECT stock_name,
+       STDDEV(daily_return) AS volatility
+FROM stock_data
+GROUP BY stock_name
+ORDER BY volatility DESC
+LIMIT 1;
+```
 
+---
 
-low\_price
+### 🔹 Best Performing Stock by Average Return
 
+```sql
+SELECT stock_name,
+       AVG(daily_return) AS avg_return
+FROM stock_data
+GROUP BY stock_name
+ORDER BY avg_return DESC;
+```
 
+---
 
-volume
+### 🔹 UP vs DOWN Trend Ratio
 
+```sql
+SELECT stock_name,
+       SUM(CASE WHEN trend='UP' THEN 1 ELSE 0 END) /
+       SUM(CASE WHEN trend='DOWN' THEN 1 ELSE 0 END) AS up_down_ratio
+FROM stock_data
+GROUP BY stock_name;
+```
 
+---
 
-stock\_symbol
+## 🧪 How to Run This Project
 
+### 1️⃣ Clone Repository
 
+```bash
+git clone https://github.com/yourusername/stock-analysis.git
+cd stock-analysis
+```
 
-date
+### 2️⃣ Install Dependencies
 
+```bash
+pip install -r requirements.txt
+```
 
+### 3️⃣ Run Jupyter Notebook
 
+```bash
+jupyter notebook
+```
 
+### 4️⃣ Setup MySQL
 
-Step 2: Data Cleaning \& ETL using Python (Pandas)
+- Create database
+- Execute DDL scripts
+- Load cleaned dataset
+- Run analytics queries
 
+---
 
+## 📦 requirements.txt
 
+```text
+pandas
+numpy
+matplotlib
+mysql-connector-python
+seaborn
+```
 
+---
 
-1\. Deduplication
+## 📈 Outcome
 
+- Cleaned & validated stock dataset
+- SQL analytical reports
+- Technical analysis dashboards
+- Business insight summary
+- End-to-end ETL pipeline implementation
 
+---
 
-Removed duplicate records using:
+## 🚀 Future Enhancements
 
+- Add ARIMA / LSTM forecasting
+- Build interactive dashboard using Streamlit
+- Automate ETL using Apache Airflow
+- Deploy on AWS / GCP
+- Integrate real-time stock API
 
+---
 
-df.drop\_duplicates(inplace=True)
+## 👨‍💻 Author
 
+**Bellamkonda Satya Sai Venkateswarlu**  
+Data Engineering | Financial Analytics | Python | SQL  
 
+---
 
+## ⭐ Support
 
-
-2\. Missing Value Treatment (Business Rules Applied)
-
-close\_price	- Replaced with median close\_price per stock
-
-volume	- Replaced with 0
-
-high\_price- Replaced with max(open\_price, close\_price)
-
-low\_price- Replaced with min(open\_price, close\_price)
-
-
-
-
-
-3.Price Sanity Checks
-
-
-
-Ensured:
-
-
-
-high\_price ≥ open\_price AND close\_price
-
-
-
-low\_price ≤ open\_price AND close\_price
-
-
-
-If violated:
-
-
-
-Auto-corrected using max() and min() logic.
-
-
-
-
-
-4\.
-
-Daily Return Calculation
-
-df\['daily\_return'] = (df\['close\_price'] - df\['open\_price']) / df\['open\_price']
-
-
-
-5\. Trend Classification
-
-daily\_return > 0	UP
-
-daily\_return < 0	DOWN
-
-daily\_return = 0	NO\_CHANGE
-
-
-
-Step 3: Load Clean Data into MySQL
-
-
-
-Created clean MySQL tables with constraints.
-
-
-
-Used DDL with:
-
-
-
-NOT NULL
-
-
-
-CHECK constraints
-
-
-
-Proper datatypes
-
-
-
-Primary keys
-
-
-
-CREATE TABLE stocks\_clean (
-
-&nbsp;   stock\_symbol VARCHAR(10),
-
-&nbsp;   trade\_date DATE,
-
-&nbsp;   open\_price DECIMAL(10,2),
-
-&nbsp;   close\_price DECIMAL(10,2),
-
-&nbsp;   high\_price DECIMAL(10,2),
-
-&nbsp;   low\_price DECIMAL(10,2),
-
-&nbsp;   volume BIGINT,
-
-&nbsp;   daily\_return DECIMAL(10,4),
-
-&nbsp;   trend VARCHAR(10)
-
-);
-
-
-
-
-
-Step 4: SQL Technical Analysis Queries
-
-1️⃣ Plot Daily Closing Price Trends per Stock
-
-
-
-Extracted stock-wise date and close\_price
-
-<img width="571" height="453" alt="image" src="https://github.com/user-attachments/assets/5b4dbf96-b35e-4ca9-96b0-cc8461938f60" />
-
-
-Used Matplotlib for line charts
-
-
-
-2️⃣ Identify Highest Volatility Stock
-
-
-
-Volatility calculated 
-
-
-
-3️⃣ Volume vs Price Movement Correlation
-
-
-
-Used correlation logic in Python to check:
-
-
-
-Whether higher volume leads to larger price changes
-
-
-
-4️⃣ Moving Averages (7-day \& 30-day)
-
-
-
-Step 5: Data Visualization
-
-
-
-Used:
-
-
-
-Matplotlib
-
-
-
-Seaborn
-
-
-
-Visualizations Created:
-
-
-
-Daily closing price trend
-
-
-
-Moving averages comparison
-
-
-
-Volatility comparison
-
-
-
-Volume spike detection
-
-
-
----------------------------------------
-
-
-
-Business Insights Generated
-
-1️⃣ Best Performing Stock
-
-
-
-Identified using highest average daily returns.
-
-
-
-2️⃣ Abnormal Volume Spike Days
-
-
-
-Days where
-
-
-
-
-
-volume > 2 × average\_volume
-
-
-
-if gets nothing in graph we have to us ethis:
-
-volume > 2 × average\_volume
-
-3️⃣ UP vs DOWN Trend Ratio per Company
-
-
-
-Compared number of UP days vs DOWN days
-
-
-
-Determined overall stock strength
-
-
-
-
-
-
-
-Final Outcome:
-
-
-
-Cleaned and validated stock dataset
-
-
-
-Built MySQL analytics tables
-
-
-
-Generated SQL-driven insights
-
-
-
-Created visual dashboards
-
-
-
-Derived business-level investment insights
-
-
-
+If you found this project helpful, give it a ⭐ on GitHub!
