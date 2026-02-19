@@ -296,6 +296,7 @@ Step 4: SQL Technical Analysis Queries
 
 Extracted stock-wise date and close\_price
 
+<img width="571" height="453" alt="image" src="https://github.com/user-attachments/assets/5b4dbf96-b35e-4ca9-96b0-cc8461938f60" />
 
 
 Used Matplotlib for line charts
